@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require('discord.js'); 
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js'); 
 
 const { getArmor } = require('../../utils/api.js');
 
@@ -20,12 +20,11 @@ module.exports = {
                 });
             }
             
-
-            const armorInfoEmbed = {
-                color: 0xfa8070, 
-                title: armor.name, 
-                description: `
-**Rarity:** ${armor.rarity}\u200b
+            const armorInfoEmbed = new EmbedBuilder()
+            .setColor(0xfa8070) 
+            .setTitle(armor.name)
+            .setDescription(
+`**Rarity:** ${armor.rarity}\u200b
 ${armor.description}\n
 **Decoration Slots:** ${armor.slots}\n 
 **Armor Stats & Resistances**\u200b
@@ -35,13 +34,11 @@ ${armor.description}\n
 💧Water         ${armor.resistances.water}
 🧊Ice           ${armor.resistances.ice}
 ⚡Thunder       ${armor.resistances.thunder}
-🐲Dragon        ${armor.resistances.dragon}\`\`\`
-                `, 
-                thumbnail: {
-                    url: "https://monsterhunterwiki.org/images/f/fa/MHWilds-Armguards_Icon_Rare_1.png",
-                }, 
-                fields: skillField
-            };
+🐲Dragon        ${armor.resistances.dragon}\`\`\``
+            )
+            .setThumbnail("https://monsterhunterwiki.org/images/f/fa/MHWilds-Armguards_Icon_Rare_1.png")
+            .setFields(skillField);
+
             await interaction.reply({ embeds: [armorInfoEmbed] });
         }
         
