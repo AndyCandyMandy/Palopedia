@@ -2,7 +2,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 
 const { getArmor } = require('../../utils/api.js'); 
 const { getArmorIcon } = require('../../utils/getArmorIcon.js');
-
+const { getColorRarity } = require('../../utils/getColorRarity.js');
 
 module.exports = {
 
@@ -21,10 +21,12 @@ module.exports = {
                 });
             } 
 
-            const armorIcon = getArmorIcon(armor.kind, armor.rarity);
+            const armorIcon = getArmorIcon(armor.kind, armor.rarity); 
+
+            const colorRarity = getColorRarity(armor.rarity);
             
             const armorInfoEmbed = new EmbedBuilder()
-            .setColor(0xfa8070) 
+            .setColor(colorRarity) 
             .setTitle(armor.name)
             .setDescription(
 `**Rarity:** ${armor.rarity}\u200b
