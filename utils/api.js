@@ -1,5 +1,5 @@
 async function getArmor() {
-    const url = "https://wilds.mhdb.io/en/armor/1";
+    const url = "https://wilds.mhdb.io/en/armor/245";
     try {
         const response = await fetch(url);
         if (!response.ok) {

@@ -1,6 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js'); 
 
-const { getArmor } = require('../../utils/api.js');
+const { getArmor } = require('../../utils/api.js'); 
+const { getArmorIcon } = require('../../utils/getArmorIcon.js');
 
 
 module.exports = {
@@ -18,7 +19,9 @@ module.exports = {
                     value: `${armor.skills[i].description}`, 
                     inline: false
                 });
-            }
+            } 
+
+            const armorIcon = getArmorIcon(armor.kind, armor.rarity);
             
             const armorInfoEmbed = new EmbedBuilder()
             .setColor(0xfa8070) 
@@ -36,10 +39,10 @@ ${armor.description}\n
 ⚡Thunder       ${armor.resistances.thunder}
 🐲Dragon        ${armor.resistances.dragon}\`\`\``
             )
-            .setThumbnail("https://monsterhunterwiki.org/images/f/fa/MHWilds-Armguards_Icon_Rare_1.png")
+            .setThumbnail(`attachment://${armorIcon.name}`)
             .setFields(skillField);
 
-            await interaction.reply({ embeds: [armorInfoEmbed] });
+            await interaction.reply({ embeds: [armorInfoEmbed], files: [armorIcon] });
         }
         
         catch (error) {
