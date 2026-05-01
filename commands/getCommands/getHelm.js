@@ -6,7 +6,7 @@ const { getColorRarity } = require('../../utils/getColorRarity.js');
 
 module.exports = {
 
-	data: new SlashCommandBuilder().setName('get_helm').setDescription('Retrieves a low ranking armor piece from Monster Hunter Wilds!'),
+	data: new SlashCommandBuilder().setName('get_helm').setDescription('Retrieves a helmet armor piece from Monster Hunter Wilds!'),
 	async execute(interaction) { 
 
         try {
