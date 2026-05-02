@@ -1,6 +1,6 @@
-async function getArmor() {
-    //const url = `https://wilds.mhdb.io/en/armor/?type=${armorType}`;
-    const url = `https://wilds.mhdb.io/en/armor/235`;
+async function getArmor(armorType) {
+    const url = `https://wilds.mhdb.io/en/armor?kind=${armorType}`;
+
     try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -15,4 +15,21 @@ async function getArmor() {
     }
 } 
 
-module.exports = { getArmor };
+async function getArmorPiece(armorId) {
+    const url = `https://wilds.mhdb.io/en/armor/${armorId}`;
+    
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+
+        const result = await response.json();
+        return result;
+    } catch (error) {
+        console.error(error.message);
+        throw error;
+    }
+} 
+
+module.exports = { getArmor, getArmorPiece };
