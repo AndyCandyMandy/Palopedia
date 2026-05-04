@@ -2,7 +2,8 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 
 const { getArmor, getArmorPiece } = require('../../utils/api.js'); 
 const { getArmorIcon } = require('../../utils/getArmorIcon.js');
-const { getColorRarity } = require('../../utils/getColorRarity.js');
+const { getColorRarity } = require('../../utils/getColorRarity.js'); 
+const { armorDecoSlots } = require('../../utils/armorDecoSlots.js'); 
 
 
 let armorCache = {};
@@ -50,6 +51,8 @@ module.exports = {
         const colorRarity = getColorRarity(armor.rarity); 
         const armorIcon = getArmorIcon(armor.kind, armor.rarity); 
 
+        const slots = armorDecoSlots(armor.slots);
+
         const skillField = [];
         for (let i = 0; i < armor.skills.length; i++) {
             skillField.push({
@@ -65,7 +68,7 @@ module.exports = {
             .setDescription(
 `**Rarity:** ${armor.rarity}\u200b
 ${armor.description}\n
-**Decoration Slots:** ${armor.slots}\n 
+**Decoration Slots:** ${slots}\n 
 **Armor Stats & Resistances**\u200b
 \`\`\`🛡️DEF: (${armor.defense.base}) -> (${armor.defense.max})
 -------------------
