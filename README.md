@@ -13,10 +13,18 @@ Discord bot invite link: https://discord.com/oauth2/authorize?client_id=14937756
 (Note: This bot is currently offline. Currently there are no plans on hosting this bot due to a lack of resources. The purpose of this project is to allow me to learn and hone my skills as a fullstack developer.)
 
 ## Features 
+/help 
+
+/getArmor 
+
+/getSkill
 
 ## Installion 
 
 ## Attributions 
-This project utilizes the MHWILDS Equipment Icons from: https://www.monsterhunterwiki.org/wiki/Category:MHWilds_Equipment_Icons licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). 
+This project utilizes the "MHWILDS Equipment Icons" and "MHWilds Equipment Skill Icons" from the Monster Hunter Wiki: 
+- https://www.monsterhunterwiki.org/wiki/Category:MHWilds_Equipment_Icons 
+- https://monsterhunterwiki.org/wiki/Category:MHWilds_Equipment_Skill_Icons 
+Licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). 
 
 The icons can be found unmodified under "./assets/MHWILDS_Icons/..." divided into sub folders. 
