@@ -18,13 +18,17 @@ module.exports = {
 If there are any issues please contact the server owner.\u200b
 **Discord Invite:** https://discord.com/oauth2/authorize?client_id=1493775697938878674
 
-**1.) /getArmor:**\u200b 
-This will display the armor name, rarity, ingame description, decoration slots, stats, and embedded skills.\u200b 
+**1.) /get_armor:**\u200b 
+This will display the armor name, rarity, ingame description, decoration slots, stats, and embedded skills. The slash command is divided based on armor piece and armor name.\u200b 
 \`\`\`/get_armor\`\`\` 
 
-**2.) /getSkill:**\u200b  
-Type this command to retrieve a skill from Monster Hunter Wilds!\u200b
-\`\`\`/getSkill\`\`\`
+**2.) /get_skill:**\u200b  
+Type this command to retrieve the skill name, type, desciption, and skill levels. This command is divided based on the skill type (Armor or Weapon) and the skill name.\u200b
+\`\`\`/get_skill\`\`\` 
+
+**3.) /get_set_bonus:**\u200b  
+Type this command to retrieve the set bonus or group bonus from Monster Hunter Wilds.\u200b
+\`\`\`/get_set_bonus\`\`\` 
 `
 			) 
 			.setThumbnail("attachment://Palopedia_Icon.png");

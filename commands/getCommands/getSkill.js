@@ -1,7 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');  
 
 const { getAllSkill, getSkill } = require('../../utils/api.js'); 
-const { getSkillIcon } = require('../../utils/getSkillIcon.js'); 
+const { getSkillIcon } = require('../../utils/getIcon.js'); 
 const { getSkillColor } = require('../../utils/getColor.js'); 
 
 let skillCache = {};
@@ -43,6 +43,7 @@ module.exports = {
         const skillId = interaction.options.getString('skill_name');
         const skill = await getSkill(skillId); 
 
+        const skillKind = skill.kind[0].toUpperCase() + skill.kind.slice(1);
         const skillIcon = getSkillIcon(skill.icon.kind);
         const skillColor = getSkillColor(skill.icon.kind);
 
@@ -59,7 +60,7 @@ module.exports = {
             .setColor(skillColor) 
             .setTitle(skill.name)
             .setDescription(
-`**Skill Type:** ${skill.kind}\u200b
+`**Skill Type:** ${skillKind}\u200b
 ${skill.description}\n
 -------------------------`
             ) 
