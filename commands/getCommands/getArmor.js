@@ -27,7 +27,7 @@ module.exports = {
                 { name: 'Leggings', value: 'legs' }
             )
         )
-        .addStringOption(option =>option.setName('armor_name').setDescription('Declare the armor name').setRequired(true).setAutocomplete(true)),
+        .addStringOption(option => option.setName('armor_name').setDescription('Declare the armor name').setRequired(true).setAutocomplete(true)),
 
 	async autocomplete(interaction) {
         const armorType = interaction.options.getString('armor_type');
