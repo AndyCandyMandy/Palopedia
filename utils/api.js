@@ -32,8 +32,8 @@ async function getArmorPiece(armorId) {
     }
 } 
 
-async function getAllSkill() {
-    const url = `https://wilds.mhdb.io/en/skills`; 
+async function getAllSkill(skillType) {
+    const url = `https://wilds.mhdb.io/en/skills?kind=${skillType}`; 
 
     try { 
         const response = await fetch(url);

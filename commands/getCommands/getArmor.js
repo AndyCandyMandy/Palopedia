@@ -2,7 +2,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 
 const { getArmor, getArmorPiece } = require('../../utils/api.js'); 
 const { getArmorIcon } = require('../../utils/getArmorIcon.js');
-const { getColorRarity } = require('../../utils/getColorRarity.js'); 
+const { getColorRarity } = require('../../utils/getColor.js'); 
 const { armorDecoSlots } = require('../../utils/armorDecoSlots.js'); 
 
 
