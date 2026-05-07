@@ -47,7 +47,7 @@ async function getAllSkill(skillType) {
         console.error(error.message);
         throw error;
     }
-} 
+}  
 
 async function getSkill(skillId) {
     const url = `https://wilds.mhdb.io/en/skills/${skillId}`; 

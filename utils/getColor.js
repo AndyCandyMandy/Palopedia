@@ -29,7 +29,10 @@ function getSkillColor(skillType) {
         offense: "#7b5265", 
         ranged: "#73797f", 
         stamina: "#976f36",
-        utility: "#4a5a84"
+        utility: "#4a5a84", 
+
+        group: "#aaf1f2", 
+        set: "#f2bbaa",
     } 
     const skillColor = skillColorTable[skillType] || skillColorTable["item"]; 
     return skillColor;

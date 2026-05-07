@@ -77,7 +77,10 @@ function getSkillIcon(skillType) {
         offense: "MHWilds-Empower_Skill_Icon.png", 
         ranged: "MHWilds-Ammo_Skill_Icon.png", 
         stamina: "MHWilds-Stamina_Skill_Icon.png",
-        utility: "MHWilds-Reinforce_Skill_Icon.png"
+        utility: "MHWilds-Reinforce_Skill_Icon.png", 
+
+        group: "MHWilds-Group_Skill_Icon.png", 
+        set: "MHWilds-Set_Skill_Icon.png"
     } 
 
     const iconPath = skillIconTable[skillType] ?? armorIconTable["item"];

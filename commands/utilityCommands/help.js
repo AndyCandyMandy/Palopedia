@@ -26,8 +26,8 @@ This will display the armor name, rarity, ingame description, decoration slots, 
 Type this command to retrieve the skill name, type, desciption, and skill levels. This command is divided based on the skill type (Armor or Weapon) and the skill name.\u200b
 \`\`\`/get_skill\`\`\` 
 
-**3.) /get_set_bonus:**\u200b  
-Type this command to retrieve the set bonus or group bonus from Monster Hunter Wilds.\u200b
+**3.) /get_bonus_skill:**\u200b  
+This command will retrieve the set bonus/group skills assigned to the specifc armor in the game. It will display the skill name, type, skill level, level desciptions, and the required armor pieces for each level. This slash command is diveded between the set bonus/group skills and the skill name.\u200b
 \`\`\`/get_set_bonus\`\`\` 
 `
 			) 
