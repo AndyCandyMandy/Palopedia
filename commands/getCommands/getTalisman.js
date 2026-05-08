@@ -1,6 +1,9 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');  
+const path = require("node:path");
 
 const { getAllTalisman, getTalisman } = require('../../utils/api.js'); 
+const { getTalismanIcon } = require('../../utils/getIcon.js');
+const { getColorRarity } = require('../../utils/getColor.js'); 
 
 
 let talismanCache = null;
@@ -31,11 +34,35 @@ module.exports = {
             const talismanId = interaction.options.getString('talisman_name');
             const talisman = await getTalisman(talismanId); 
 
-			const talismanInfoEmbed = new EmbedBuilder()
-            .setColor('#fcba03') 
-            .setTitle(talisman.ranks[0].name.slice(0, -2))
-            .setDescription(`TESTING`);
+			let highestRarity = 0;
+			const rankField = []; 
+            for (let i = 0; i < talisman.ranks.length; i++) { 
+				if (talisman.ranks[i].rarity > highestRarity) {
+					highestRarity = talisman.ranks[i].rarity;
+				}
 
-            await interaction.reply({ embeds: [talismanInfoEmbed] });
+                rankField.push({
+                    name: `${talisman.ranks[i].name}`,
+                    value: 
+                    `**Rarity** ${talisman.ranks[i].rarity}\u200b
+                    ${talisman.ranks[i].skills[0].skill.name} Lvl. ${talisman.ranks[i].skills[0].level}\u200b
+					- ${talisman.ranks[i].skills[0].description}`, 
+                    inline: false
+                });
+            }  
+
+			const colorRarity = getColorRarity(highestRarity);
+			const talismanIcon = getTalismanIcon(highestRarity);
+
+			const talismanInfoEmbed = new EmbedBuilder()
+            .setColor(colorRarity) 
+            .setTitle(talisman.ranks[0].name.slice(0, -2))
+            .setDescription(
+`${talisman.ranks[0].description}
+-------------------------`)
+			.setThumbnail(`attachment://${talismanIcon.name}`)
+			.setFields(rankField);
+
+            await interaction.reply({ embeds: [talismanInfoEmbed], files: [talismanIcon] });
         }
 }

@@ -83,7 +83,7 @@ function getSkillIcon(skillType) {
         set: "MHWilds-Set_Skill_Icon.png"
     } 
 
-    const iconPath = skillIconTable[skillType] ?? armorIconTable["item"];
+    const iconPath = skillIconTable[skillType] ?? skillIconTable["item"];
     const skillIcon = new AttachmentBuilder(
         path.join(__dirname, `../assets/MHWILDS_ICONS/skill/${iconPath}`),
         { name: path.basename(iconPath)}
@@ -91,4 +91,24 @@ function getSkillIcon(skillType) {
     return skillIcon;
 } 
 
-module.exports = { getArmorIcon, getSkillIcon };
+function getTalismanIcon(talismanRarity) {
+    const TalismanIconTable = {
+        1: "MHWilds-Talisman_Icon_Rare_1.png",
+        2: "MHWilds-Talisman_Icon_Rare_2.png",
+        3: "MHWilds-Talisman_Icon_Rare_3.png",
+        4: "MHWilds-Talisman_Icon_Rare_4.png",
+        5: "MHWilds-Talisman_Icon_Rare_5.png",
+        6: "MHWilds-Talisman_Icon_Rare_6.png",
+        7: "MHWilds-Talisman_Icon_Rare_7.png",
+        8: "MHWilds-Talisman_Icon_Rare_8.png"
+    } 
+
+    const iconPath = TalismanIconTable[talismanRarity] ?? TalismanIconTable[1];
+    const talismanIcon = new AttachmentBuilder(
+        path.join(__dirname, `../assets/MHWILDS_ICONS/talismans/${iconPath}`),
+        { name: path.basename(iconPath)}
+    );
+    return talismanIcon;
+} 
+
+module.exports = { getArmorIcon, getSkillIcon, getTalismanIcon };
