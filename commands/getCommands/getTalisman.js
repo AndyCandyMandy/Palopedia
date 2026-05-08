@@ -44,9 +44,10 @@ module.exports = {
                 rankField.push({
                     name: `${talisman.ranks[i].name}`,
                     value: 
-                    `**Rarity** ${talisman.ranks[i].rarity}\u200b
-                    ${talisman.ranks[i].skills[0].skill.name} Lvl. ${talisman.ranks[i].skills[0].level}\u200b
-					- ${talisman.ranks[i].skills[0].description}`, 
+`
+**Rarity** ${talisman.ranks[i].rarity}\u200b
+${talisman.ranks[i].skills[0].skill.name} Lvl. ${talisman.ranks[i].skills[0].level}\u200b
+- ${talisman.ranks[i].skills[0].description}`, 
                     inline: false
                 });
             }  
