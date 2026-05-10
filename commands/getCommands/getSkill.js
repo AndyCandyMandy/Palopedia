@@ -4,12 +4,12 @@ const { getAllSkill, getSkill } = require('../../utils/api.js');
 const { getSkillIcon } = require('../../utils/getIcon.js'); 
 const { getSkillColor } = require('../../utils/getColor.js'); 
 
-let skillCache = {};
-async function loadSkillCache(skillType) {
-    if (!skillCache[skillType]) {
-        skillCache[skillType] = await getAllSkill(skillType); 
+let skillCache = null;
+async function loadSkillCache() {
+    if (!skillCache) {
+        skillCache = await getAllSkill(); 
     }
-    return skillCache[skillType];
+    return skillCache;
 }
 
 module.exports = {
@@ -32,7 +32,7 @@ module.exports = {
             return interaction.respond([]);
         }
 
-        const skillList = await loadSkillCache(skillType);
+        const skillList = await loadSkillCache();
 
         const filtered = skillList
         .filter(skill => skill.kind === skillType && skill.name.toLowerCase().startsWith(focusedOption.value.toLowerCase())).slice(0, 25);

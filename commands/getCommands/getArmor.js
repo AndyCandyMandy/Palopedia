@@ -6,12 +6,12 @@ const { getColorRarity } = require('../../utils/getColor.js');
 const { armorDecoSlots } = require('../../utils/armorDecoSlots.js'); 
 
 
-let armorCache = {};
-async function loadArmorCache(armorType) {
-    if (!armorCache[armorType]) {
-        armorCache[armorType] = await getArmor(armorType);
+let armorCache = null;
+async function loadArmorCache() {
+    if (!armorCache) {
+        armorCache = await getArmor();
     }
-    return armorCache[armorType];
+    return armorCache;
 }
 
 module.exports = {
@@ -37,7 +37,7 @@ module.exports = {
             return interaction.respond([]);
         }
 
-        const armorList = await loadArmorCache(armorType);
+        const armorList = await loadArmorCache();
 
 		const filtered = armorList
         .filter(armor => armor.kind === armorType && armor.name.toLowerCase().startsWith(focusedOption.value.toLowerCase())).slice(0, 25);

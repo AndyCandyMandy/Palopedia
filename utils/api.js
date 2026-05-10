@@ -1,6 +1,5 @@
-async function getArmor(armorType) {
-    const url = `https://wilds.mhdb.io/en/armor?kind=${armorType}`;
-
+async function getArmor() {
+    const url = `https://wilds.mhdb.io/en/armor/`;
     try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -32,8 +31,8 @@ async function getArmorPiece(armorId) {
     }
 } 
 
-async function getAllSkill(skillType) {
-    const url = `https://wilds.mhdb.io/en/skills?kind=${skillType}`; 
+async function getAllSkill() {
+    const url = `https://wilds.mhdb.io/en/skills/`; 
 
     try { 
         const response = await fetch(url);
