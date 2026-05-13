@@ -137,7 +137,7 @@ ${legsSlots} \n
 🐲Dragon        ${dragonRes}\`\`\`
 `
                 )
-                
+                .setFields(combinedSkills);
 
             await interaction.reply({ embeds: [loadoutInfoEmbed] });
         }
