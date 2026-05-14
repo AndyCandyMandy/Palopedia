@@ -50,10 +50,9 @@ module.exports = {
             const rankField = []; 
             for (let i = 0; i < bonusSkill.ranks.length; i++) {
                 rankField.push({
-                    name: `${bonusSkill.name} Lvl. ${bonusSkill.ranks[i].level}`,
+                    name: `${bonusSkill.ranks[i].name}`,
                     value: 
-                    `${bonusSkill.ranks[i].description}\u200b
-                    **(${bonusSkill.ranks[i].setPiecesRequired} Armor Pieces)**`, 
+                    `**(Req: ${bonusSkill.ranks[i].setPiecesRequired} Armor Pieces)**\n${bonusSkill.ranks[i].description}`, 
                     inline: false
                 });
             } 

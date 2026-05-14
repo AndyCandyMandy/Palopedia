@@ -54,12 +54,21 @@ module.exports = {
         const slots = armorDecoSlots(armor.slots);
 
         const skillField = [];
-        for (let i = 0; i < armor.skills.length; i++) {
-            skillField.push({
-                name: `${armor.skills[i].skill.name} Lvl. ${armor.skills[i].level}`,
-                value: `${armor.skills[i].description}`, 
-                inline: false
-            });
+        for (let i = 0; i < armor.skills.length; i++) { 
+            if (armor.skills[i].setPiecesRequired != null) {
+                skillField.push({
+                    name: `${armor.skills[i].skill.name} Lvl. ${armor.skills[i].level}`,
+                    value: `**(Req: ${armor.skills[i].setPiecesRequired} Armor Pieces)**\n${armor.skills[i].description}`, 
+                    inline: false
+                });
+            } 
+            else {
+                skillField.push({
+                    name: `${armor.skills[i].skill.name} Lvl. ${armor.skills[i].level}`,
+                    value: `${armor.skills[i].description}`, 
+                    inline: false
+                });
+            }
         } 
 
         const armorInfoEmbed = new EmbedBuilder()
