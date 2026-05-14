@@ -35,7 +35,7 @@ Type this command to retrieve a talisman which includes its name, desciption, an
 \`\`\`/get_talisman\`\`\` 
 
 **5.) /build_loadout:**\u200b  
-This command builds an equipment loadout using the helmet, chest, vambraces, coil and legging armor pieces along with a talisman.\u200b
+This command builds an equipment loadout using the helmet, chest, vambraces, coil and legging armor pieces along with a talisman. This showcases the cumulative decoration slots, armor stats, and armor skills.\u200b
 \`\`\`/build_loadout\`\`\` 
 `
 			) 

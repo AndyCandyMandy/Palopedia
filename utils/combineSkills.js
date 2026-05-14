@@ -28,15 +28,15 @@ function combineSkills(helmet, chest, arms, waist, legs, talisman, skillList) {
             // Group/Set Bonus Section
             if (body[0] >= body[2].setPiecesRequired) {
                 skillField.push({
-                    name: `({⭕}) ${name} Lvl. ${body[2].level} *(Wearing ${body[0]} Pieces)*`,
-                    value: `${body[2].description} **(${body[2].setPiecesRequired} Armor Pieces)**`, 
+                    name: `({⭕}) ${name} Lvl. ${body[2].level}`,
+                    value: `**(Wearing ${body[0]}/${body[2].setPiecesRequired} Armor Pieces)**\n${body[2].description}`, 
                     inline: false
                 });
             } 
             else {
                 skillField.push({
-                    name: `({ - }) ${name} Lvl. ${body[2].level} *(Wearing ${body[0]} Pieces)*`,
-                    value: `${body[2].description} **(${body[2].setPiecesRequired} Armor Pieces)**`, 
+                    name: `({ - }) ${name} Lvl. ${body[2].level}`,
+                    value: `**(Wearing ${body[0]}/${body[2].setPiecesRequired} Armor Pieces)**\n${body[2].description}`, 
                     inline: false
                 });
             }
@@ -53,7 +53,7 @@ function combineSkills(helmet, chest, arms, waist, legs, talisman, skillList) {
             else if (body[0] > body[1].level) {
                 skillField.push({
                     name: `({❌}) ${name} Lvl. ${body[2].level} *(Overleveled by ${body[0] - body[1].level})*`,
-                    value: `${body[2].description}`, 
+                    value: `\u2003\u2003${body[2].description}`, 
                     inline: false
                 });
             } 

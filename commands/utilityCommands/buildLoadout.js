@@ -1,5 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');  
-
+const path = require("node:path");
 
 const { getArmor, getArmorPiece, getAllTalisman, getTalisman, getAllSkill } = require('../../utils/api.js'); 
 
@@ -113,22 +113,22 @@ module.exports = {
             const combinedSkills = combineSkills(helmet, chest, arms, waist, legs, highestTalisman, skillList); 
 
             const loadoutInfoEmbed = new EmbedBuilder()
-                .setColor("#fcba03") 
+                .setColor("#6c95c6") 
                 .setTitle(`${interaction.member.displayName}'s Loadout`)
                 .setDescription(
 `**Equipment Set:**\u200b
-\`\`\`Helm:       ${helmet.name}
-Chest:      ${chest.name} 
-Arms:       ${arms.name}
-Coil:       ${waist.name}
-Legs:       ${legs.name}
-Talisman:   ${highestTalisman.name}\`\`\`
+\`\`\`Helm:   ${helmet.name}
+Chest:  ${chest.name} 
+Arms:   ${arms.name}
+Coil:   ${waist.name}
+Legs:   ${legs.name}
+Charm:  ${highestTalisman.name}\`\`\`
 **Decoration Slots:**
-\`\`\`Helm:       ${helmetSlots}
-Chest:      ${chestSlots} 
-Arms:       ${armsSlots} 
-Coil:       ${waistSlots} 
-Legs:       ${legsSlots}\`\`\`
+\`\`\`Helm:   ${helmetSlots}
+Chest:  ${chestSlots} 
+Arms:   ${armsSlots} 
+Coil:   ${waistSlots} 
+Legs:   ${legsSlots}\`\`\`
 **Equipment Defense & Resistances:**\u200b
 \`\`\`🛡️DEF: (${minDef}) -> (${maxDef})
 -------------------
