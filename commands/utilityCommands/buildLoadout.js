@@ -1,9 +1,9 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');  
 
 
-const { getArmor, getArmorPiece, getAllTalisman, getTalisman } = require('../../utils/api.js'); 
+const { getArmor, getArmorPiece, getAllTalisman, getTalisman, getAllSkill } = require('../../utils/api.js'); 
 
-const { armorDecoSlots } = require('../../utils/armorDecoSlots.js'); 
+const { armorDecoSlots } = require('../../utils/dynamicString.js'); 
 const { combineSkills } = require('../../utils/combineSkills.js'); 
 
 let armorCache = null;
@@ -43,8 +43,8 @@ module.exports = {
                 equipmentList = await loadTalismanCache();
 
                 const filtered = equipmentList
-                .filter(talisman => talisman.random === false && talisman.ranks[0].name.toLowerCase().startsWith(focusedOption.value.toLowerCase())).slice(0, 25);
-                await interaction.respond(filtered.map((talisman) => ({ name: talisman.ranks[0].name.slice(0, -2), value: String(talisman.id) })));
+                .filter(talisman => talisman.random === false && talisman.ranks[talisman.ranks.length - 1].name.toLowerCase().startsWith(focusedOption.value.toLowerCase())).slice(0, 25);
+                await interaction.respond(filtered.map((talisman) => ({ name: talisman.ranks[talisman.ranks.length - 1].name, value: String(talisman.id) })));
             }
             else {
                 if (focusedOption.name === "helmet_name") {
@@ -99,6 +99,8 @@ module.exports = {
             const talisman = await getTalisman(talismanId);
             const highestTalisman = talisman.ranks[talisman.ranks.length - 1];
 
+            const skillList = await getAllSkill();
+
             const minDef = helmet.defense.base + chest.defense.base + arms.defense.base + waist.defense.base + legs.defense.base; 
             const maxDef = helmet.defense.max + chest.defense.max + arms.defense.max + waist.defense.max + legs.defense.max;
 
@@ -108,26 +110,26 @@ module.exports = {
             const thunderRes = helmet.resistances.thunder + chest.resistances.thunder + arms.resistances.thunder + waist.resistances.thunder + legs.resistances.thunder; 
             const dragonRes = helmet.resistances.dragon + chest.resistances.dragon + arms.resistances.dragon + waist.resistances.dragon + legs.resistances.dragon;
 
-            const combinedSkills = combineSkills(helmet, chest, arms, waist, legs, highestTalisman); 
+            const combinedSkills = combineSkills(helmet, chest, arms, waist, legs, highestTalisman, skillList); 
 
             const loadoutInfoEmbed = new EmbedBuilder()
                 .setColor("#fcba03") 
-                .setTitle(`Loadout`)
+                .setTitle(`${interaction.member.displayName}'s Loadout`)
                 .setDescription(
-`**Equipment Set**\u200b
+`**Equipment Set:**\u200b
 \`\`\`Helm:       ${helmet.name}
 Chest:      ${chest.name} 
 Arms:       ${arms.name}
 Coil:       ${waist.name}
 Legs:       ${legs.name}
 Talisman:   ${highestTalisman.name}\`\`\`
-**Decoration Slots**
-${helmetSlots}
-${chestSlots} 
-${armsSlots} 
-${waistSlots} 
-${legsSlots} \n
-**Equipment Stats & Resistances**\u200b
+**Decoration Slots:**
+\`\`\`Helm:       ${helmetSlots}
+Chest:      ${chestSlots} 
+Arms:       ${armsSlots} 
+Coil:       ${waistSlots} 
+Legs:       ${legsSlots}\`\`\`
+**Equipment Defense & Resistances:**\u200b
 \`\`\`🛡️DEF: (${minDef}) -> (${maxDef})
 -------------------
 🔥Fire          ${fireRes}
@@ -135,7 +137,7 @@ ${legsSlots} \n
 🧊Ice           ${iceRes}
 ⚡Thunder       ${thunderRes}
 🐲Dragon        ${dragonRes}\`\`\`
-`
+**Equipment Skills:**`
                 )
                 .setFields(combinedSkills);
 

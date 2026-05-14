@@ -1,5 +1,4 @@
 function armorDecoSlots(decoSlots) { 
-
     let slots = "";
     if (decoSlots == null) {
         slots = "{( - )}{( - )}{( - )}" 
@@ -18,5 +17,6 @@ function armorDecoSlots(decoSlots) {
     } 
     return slots;
 } 
+
 
 module.exports = { armorDecoSlots };

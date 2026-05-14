@@ -3,7 +3,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const { getArmor, getArmorPiece } = require('../../utils/api.js'); 
 const { getArmorIcon } = require('../../utils/getIcon.js');
 const { getColorRarity } = require('../../utils/getColor.js'); 
-const { armorDecoSlots } = require('../../utils/armorDecoSlots.js'); 
+const { armorDecoSlots } = require('../../utils/dynamicString.js'); 
 
 
 let armorCache = null;
