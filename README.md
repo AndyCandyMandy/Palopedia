@@ -15,11 +15,18 @@ Discord bot invite link: https://discord.com/oauth2/authorize?client_id=14937756
 ## Features 
 /help
 
-/getArmor 
+/get_armor 
 
-/getSkill
+/get_skill 
+
+/get_bonus_skill 
+
+/get_talisman 
+
+/build_loadout
 
 ## Installion 
+
 
 ## Attributions 
 This project utilizes the "MHWILDS Equipment Icons" and "MHWilds Equipment Skill Icons" from the Monster Hunter Wiki: 
